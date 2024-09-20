@@ -1,17 +1,17 @@
 <section class="navigation">
     <div class="nav-container">
         <div class="brand">
-            <a href="#!">🍀 Library</a>
+            <a routerLink="/" routerLinkActive="active"><img src="assets/images/logo.png"/> </a>
         </div>
         <nav>
             <div class="nav-mobile">
-                <a id="nav-toggle" href="#!"><span></span></a>
+                <a id="nav-toggle" ref="#!"h><span></span></a>
             </div>
             <ul class="nav-list">
                 
-                <li><a class="nav-link" routerLink="/" routerLinkActive="active_link">Home</a></li>
-                <li><a href="#!">Search</a></li>
-                <li><a href="#!">Favorites</a></li>
+                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+                <li><a routerLink="/search" routerLinkActive="active">Search</a></li>
+                <li><a routerLink="/favorite" routerLinkActive="active">Favorite</a></li>
             </ul>
         </nav>
     </div>
