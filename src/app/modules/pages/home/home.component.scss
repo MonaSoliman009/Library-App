@@ -1,8 +1,4 @@
 
-  /*------------------------------*\
-           ¡FLEXBOX MIXINS
-  \*------------------------------*/
-  
   @mixin flexbox {
       display: -webkit-box;
       display: -webkit-flex;
@@ -205,8 +201,8 @@
   }
   
   .card-list-item {
-   
-    @include flexbox();
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        @include flexbox();
     @include flex-grow(0);
     padding: 0 0.5em;
     list-style: none;
@@ -234,7 +230,8 @@
     width: 100%;
     img {
       display: block;
-      height: auto;
+      height: 400px; 
+      object-fit: cover; 
       margin: 0 auto;
       max-width: 100%;
       width: 100%;
@@ -243,11 +240,21 @@
       @include flexbox();
       @include flex-direction(column);
       @include flex(1 0 auto);
+
       .card-heading {
-        color: #696969;
+       
         font-size: 1.25rem;
         margin: 1em 0;
-        font-weight: 300;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .card-caption{
+       
+        margin-top: 0em;
+        margin-bottom: 0.5em;
+        font-size: 1.25rem;
+        font-weight: 500;
         letter-spacing: 1px;
         text-transform: uppercase;
       }
@@ -256,6 +263,8 @@
         font-size: 0.875rem;
         line-height: 1.5;
         margin: 0 0 1em;
+        font-weight: 300;
+        text-transform: uppercase;
       }
     }
   }

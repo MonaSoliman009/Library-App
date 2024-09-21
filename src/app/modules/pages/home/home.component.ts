@@ -12,7 +12,7 @@ import { BookData } from '../../../../models/book-data';
 })
 export class HomeComponent implements OnInit , OnDestroy{
   private sub: any;
-  booksInfo: BookData[]=[];
+  books: BookData[]=[];
 
   constructor(private _BooksService:BooksService) {}
   ngOnInit() {
@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit , OnDestroy{
   
      
     //   if(res){
-    //     this.booksInfo = res.works.splice(0,9);
-    //     console.log(this.booksInfo);
+    //     this.books = res.works.splice(0,9);
+    //     console.log(this.books);
     //     // this._globaleServie.hideLocalLoader();
 
     //   }
@@ -33,6 +33,6 @@ export class HomeComponent implements OnInit , OnDestroy{
    
   }
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 }

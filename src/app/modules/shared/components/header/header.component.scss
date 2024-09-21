@@ -22,14 +22,7 @@ body{
 display:flex;
   margin: 0 auto;
 }
-.active::before {
-  height: 5px;
-  content: "";
-  position: absolute;
-  background-color: $link-hover-color;
-  width:70% !important;
-  bottom: 0px;
-}
+
 .brand {
 //   position: absolute;
   padding-left: 20px;
@@ -89,6 +82,14 @@ width: 100%;
           content: ' ▾';
         }
       } // Dropdown list
+      .active::before {
+        height: 5px;
+        content: "";
+        position: absolute;
+        background-color: $link-hover-color;
+        width:70% !important;
+        bottom: 0px;
+      }
       ul li {
         // min-width: 190px;
         a {

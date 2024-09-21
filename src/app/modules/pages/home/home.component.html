@@ -1,79 +1,33 @@
-
+<!-- 
   <div class="container ">
     <ul class="card-list">
-      <li class="card-list-item">
-        <div class="card">
-          <div class="card-image">
-            <img src="http://placehold.it/350x150" alt="placeholder" />
+      @for(item of books; track item.key){
+        <li class="card-list-item">
+          <div class="card">
+            <div class="card-image">
+              @if(item.cover_id){
+                <img [src]="'https://covers.openlibrary.org/b/id/' + item.cover_id +'.jpg'" alt="placeholder" />
+
+              }@else {
+                <img src="assets/images/default_cover.png" alt="placeholder" />
+
+                
+              }
+            </div>
+            <div class="card-content">
+              <h2 class="card-heading">Publish Year : {{item.first_publish_year              }}</h2>
+              <h3 class="card-caption">Authors Names</h3>
+              @for(author of item.authors;track author.key;let index = $index){
+               <p>{{index+1}}- {{author.name}}</p>
+              }
+            </div>
           </div>
-          <div class="card-content">
-            <h3 class="card-heading">Header</h3>
-            <p>Here's some content</p>
-            <button class="btn btn-sm primary">button</button>
-          </div>
-        </div>
-      </li>
-      <li class="card-list-item">
-        <div class="card">
-          <div class="card-image">
-            <img src="http://placehold.it/350x150" alt="placeholder" />
-          </div>
-          <div class="card-content">
-            <h3 class="card-heading">Header</h3>
-            <p>Fusce sed purus ut elit hendrerit congue. Maecenas ornare consequat molestie.</p>
-            <button class="btn btn-sm primary">button</button>
-          </div>
-        </div>
-      </li>
-      <li class="card-list-item">
-        <div class="card">
-          <div class="card-image">
-            <img src="http://placehold.it/350x150" alt="placeholder" />
-          </div>
-          <div class="card-content">
-            <h3 class="card-heading">Header</h3>
-            <p>Fusce sed purus ut elit hendrerit congue. Maecenas ornare consequat molestie.</p>
-            <button class="btn btn-sm primary">button</button>
-          </div>
-        </div>
-      </li>
-      <li class="card-list-item">
-        <div class="card">
-          <div class="card-image">
-            <img src="http://placehold.it/350x150" alt="placeholder" />
-          </div>
-          <div class="card-content">
-            <h3 class="card-heading">Header</h3>
-            <p>Fusce sed purus ut elit hendrerit congue. Maecenas ornare consequat molestie.</p>
-            <button class="btn btn-sm primary">button</button>
-          </div>
-        </div>
-      </li>
-      <li class="card-list-item">
-        <div class="card">
-          <div class="card-image">
-            <img src="http://placehold.it/350x150" alt="placeholder" />
-          </div>
-          <div class="card-content">
-            <h3 class="card-heading">Header</h3>
-            <p>Fusce sed purus ut elit hendrerit congue. Maecenas ornare consequat molestie.</p>
-            <button class="btn btn-sm primary">button</button>
-          </div>
-        </div>
-      </li>
-      <li class="card-list-item">
-        <div class="card">
-          <div class="card-image">
-            <img src="http://placehold.it/350x150" alt="placeholder" />
-          </div>
-          <div class="card-content">
-            <h3 class="card-heading">Header</h3>
-            <p>Nullam tincidunt dignissim feugiat. Nullam eget enim sit amet eros tristique fringilla a ac metus.</p>
-            <p>And some more content.</p>
-            <button class="btn btn-sm primary">button</button>
-          </div>
-        </div>
-      </li>
+        </li>
+      }@empty {
+
+      }
+   
+ 
     
     </ul>
-  </div>
+  </div> -->
