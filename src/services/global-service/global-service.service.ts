@@ -47,9 +47,9 @@ export class GlobalService {
   //#region Messaging
   public messageAlert(
     messageType: MessageType,
-    message: string,
+    message: string|undefined,
   ) {
-    this._messageAlert(messageType, message);
+    this._messageAlert(messageType, message??'');
   }
 
   public messageSwal(

@@ -1,4 +1,4 @@
-<!-- 
+
   <div class="container ">
     <ul class="card-list">
       @for(item of books; track item.key){
@@ -6,10 +6,10 @@
           <div class="card">
             <div class="card-image">
               @if(item.cover_id){
-                <img [src]="'https://covers.openlibrary.org/b/id/' + item.cover_id +'.jpg'" alt="placeholder" />
+                <img (click)="redirectToDetails(item.key)" [src]="'https://covers.openlibrary.org/b/id/' + item.cover_id +'.jpg'" alt="placeholder" />
 
               }@else {
-                <img src="assets/images/default_cover.png" alt="placeholder" />
+                <img (click)="redirectToDetails(item.key)" src="assets/images/default_cover.png" alt="placeholder" />
 
                 
               }
@@ -30,4 +30,4 @@
  
     
     </ul>
-  </div> -->
+  </div>

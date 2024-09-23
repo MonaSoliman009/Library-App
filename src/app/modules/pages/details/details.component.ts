@@ -1,12 +1,52 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BooksService } from '../../../../services/books-service/books.service';
+import { BookData } from '../../../../models/book-data';
+import { CommonModule } from '@angular/common';
+import { AuthorsService } from '../../../../services/authors-service/authors.service';
+import { Author } from '../../../../models/author-data';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
+  id: string | null = null; 
+  private sub: any;
+  book: BookData={} as BookData;
+authors:Author[]=[]
+  constructor(private route: ActivatedRoute,private _BooksService:BooksService,
+    private _AuthorsService:AuthorsService
+  ) {}
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      // console.log(this.id); 
+          // this._globaleServie.showLocalLoader();
+    this.sub = this._BooksService.getBookdetails(this.id?? '').subscribe((res) => {
+  
+     
+      if(res){
+        this.book = res;
+        console.log(res);
+        this.book.authors.forEach((author)=>{
+          this._AuthorsService.getAuthordetails(author.author.key.substring(1,)).subscribe((res) => {
+            if(res){
+              this.authors.push(res)
+              console.log("author",res);
+            }
+          })
+        })
+        // this._globaleServie.hideLocalLoader();
+
+      }
+    else {
+        // this._HelperMethodsService.errorAlert(res.Message);
+      }
+    });
+    });
+  }
 }

@@ -3,9 +3,9 @@
 import { BookData } from "./book-data";
 
 // Client Side Result Returned for Angular Service
-export interface ServiceResult<T> {
+export interface ServiceResult<T> extends BookData {
   success?: boolean;
   status?: boolean;
-  Message: string;
-  works: BookData[];
+  Message?: string;
+  works?: T;
 }
