@@ -1,7 +1,7 @@
 $card-background: #f9f9f9;
 $card-padding: 1.5rem;
 $card-border-radius: 10px;
-$primary-color: #1f4e78;
+$primary-color: #f8b500;
 $text-color: #333;
 $shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
@@ -32,16 +32,20 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
   }
 
-  .book-info {
+  .book_info {
     p {
       font-size: 1rem;
       color: $text-color;
       line-height: 1.5;
+      cursor: pointer;
       strong {
         font-weight: 600;
         color: $primary-color;
       }
     }
+    .card_caption{
+      color:$primary-color !important
+     }
   }
 }
 

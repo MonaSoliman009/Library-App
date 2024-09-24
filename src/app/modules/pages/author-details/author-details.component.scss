@@ -1,7 +1,7 @@
 $card-background: #f9f9f9;
 $card-padding: 1.5rem;
 $card-border-radius: 10px;
-$primary-color: #1f4e78;
+$primary-color: #f8b500;
 $text-color: #333;
 $shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
@@ -57,6 +57,9 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     -moz-border-radius:15%;
     -ms-border-radius:15%;
     -o-border-radius:15%;
+}
+h3{
+  color:$primary-color
 }
 }
 

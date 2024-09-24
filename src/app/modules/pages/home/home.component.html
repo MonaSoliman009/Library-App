@@ -1,35 +1,40 @@
 
   <div class="container ">
-    <app-localspinner *ngIf="_globaleServie.LocalLoadoer"></app-localspinner>
+    @if(_globaleServie.LocalLoadoer){
+      <app-localspinner ></app-localspinner>
 
-    <ul class="card-list">
-      @for(item of books; track item.key){
-        <li class="card-list-item">
-          <div class="card">
-            <div class="card-image">
-              @if(item.cover_id){
-                <img (click)="redirectToBookDetails(item.key)" [src]="'https://covers.openlibrary.org/b/id/' + item.cover_id +'.jpg'" alt="placeholder" />
-
-              }@else {
-                <img (click)="redirectToBookDetails(item.key)" src="assets/images/default_cover.png" alt="placeholder" />
-
-                
-              }
+    }@else{
+      <ul class="card-list">
+        @for(item of books; track item.key){
+          <li class="card-list-item">
+            <div class="card">
+              <div class="card-image">
+                @if(item.cover_id){
+                  <img (click)="redirectToBookDetails(item.key)" [src]="'https://covers.openlibrary.org/b/id/' + item.cover_id +'.jpg'" alt="placeholder" />
+  
+                }@else {
+                  <img (click)="redirectToBookDetails(item.key)" src="assets/images/default_cover.png" alt="placeholder" />
+  
+                  
+                }
+              </div>
+              <div class="card-content">
+                <h2 class="card-heading">Publish Year : {{item.first_publish_year              }}</h2>
+                <h3 class="card-caption">Authors Names</h3>
+                @for(author of item.authors;track author.key;let index = $index){
+                 <p style="cursor: pointer;" (click)="redirectToAuthorDetails(author.name)">{{index+1}}- {{author.name}}</p>
+                }
+              </div>
             </div>
-            <div class="card-content">
-              <h2 class="card-heading">Publish Year : {{item.first_publish_year              }}</h2>
-              <h3 class="card-caption">Authors Names</h3>
-              @for(author of item.authors;track author.key;let index = $index){
-               <p (click)="redirectToAuthorDetails(author.name)">{{index+1}}- {{author.name}}</p>
-              }
-            </div>
-          </div>
-        </li>
-      }@empty {
-
-      }
+          </li>
+        }@empty {
+  
+        }
+     
    
- 
-    
-    </ul>
+      
+      </ul>
+    }
+
+  
   </div>

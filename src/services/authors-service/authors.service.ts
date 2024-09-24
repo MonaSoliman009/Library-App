@@ -5,7 +5,8 @@ import { environment } from '../../environments/environment.prod';
 import { BaseService } from '../base-service/base-service.service';
 import { Observable } from 'rxjs';
 import { ServiceResult } from '../../models/service.result';
-import { Author } from '../../models/author-data';
+import { Author, AuthorDetailsResponse } from '../../models/author-data';
+import { AuthorData } from '../../models/book-data';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,10 @@ export class AuthorsService extends BaseService{
   ) {
     super(environment.baseUrl, _http, _globaleService);
   }
-  getAuthordetails(name: string): Observable<any> {
-    return this.get<any>(`search/authors.json?q=${name}`);
+  getAuthordetails(name: string): Observable<AuthorDetailsResponse> {
+    return this.get<AuthorDetailsResponse>(`search/authors.json?q=${name}`);
+  }
+  getAuthorDetailsByKey(key: string): Observable<AuthorData> {
+    return this.get<AuthorData>(`${key}.json`);
   }
 }

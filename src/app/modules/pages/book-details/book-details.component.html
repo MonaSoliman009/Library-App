@@ -1,15 +1,17 @@
 <div class="book-details-card">
+  @if(_globaleServie.LocalLoadoer){
+    <app-localspinner ></app-localspinner>
+
+  }@else{
     <div class="book-header">
       <h2 class="book-title">{{book.title}}</h2>
-      <!-- <p class="book-authors">by F. Scott Fitzgerald</p> -->
     </div>
-    <div class="book-info">
-      <p><strong>First Publish Year:</strong> {{book?.created?.value | date:'yyyy'}}</p>
-      <!-- <p><strong>Editions Count:</strong> 12</p> -->
-      <!-- <p><strong>No. of Pages:</strong> 218</p> -->
-      <h3 class="card-caption">Authors Names</h3>
+    <div class="book_info">
+      <p><strong>First Publish Year:</strong> {{book.created.value | date:'yyyy'}}</p>
+
+      <h3 class="card_caption">Authors Names :</h3>
       @for(author of authors;track author.key;let index = $index){
-      <p>{{index+1}}- {{author.name}}</p>
+      <p (click)="redirectToAuthorDetails(author.name)">{{index+1}}- {{author.name}}</p>
       }
-    </div>
+    </div>}
   </div>
