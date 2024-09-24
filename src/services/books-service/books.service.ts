@@ -5,7 +5,7 @@ import { BaseService } from '../base-service/base-service.service';
 import { environment } from '../../environments/environment.prod';
 import { BookData, BookDataResponse } from '../../models/book-data';
 import { Observable } from 'rxjs';
-import { ServiceResult } from '../../models/service.result';
+import { BooksApiCallResponse, ServiceResult } from '../../models/service.result';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +20,8 @@ export class BooksService extends BaseService {
     super(environment.baseUrl, _http, _globaleService);
   }
 
-  getBooksData(): Observable< BookDataResponse> {
-    return this.get<BookDataResponse>(`subjects/finance.json`);
+  getBooksData(): Observable< BooksApiCallResponse> {
+    return this.get<BooksApiCallResponse>(`subjects/finance.json`);
   }
 
   getBookdetails(id: string): Observable<BookData> {

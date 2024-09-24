@@ -1,31 +1,41 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { GlobalService } from '../../../../services/global-service/global-service.service';
+import { GlobalService, MessageType } from '../../../../services/global-service/global-service.service';
 import { BooksService } from '../../../../services/books-service/books.service';
 import { BookData } from '../../../../models/book-data';
 import { Router } from '@angular/router';
+import { LocalspinnerComponent } from '../../shared/components/localspinner/localspinner.component';
+import { CommonModule } from '@angular/common';
+import { Work } from '../../../../models/service.result';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [LocalspinnerComponent,CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private sub: any;
-  books: BookData[] = [];
+  books: Work[] = [];
 
-  constructor(private _BooksService: BooksService, private router: Router) {}
+  constructor(private _BooksService: BooksService, private router: Router,
+    public _globaleServie :GlobalService
+  ) {}
   ngOnInit() {
-    // this._globaleServie.showLocalLoader();
+    this._globaleServie.showLocalLoader();
     this.sub = this._BooksService.getBooksData().subscribe((res) => {
       if (res) {
+        console.log(res);
+        
         this.books = res.works.splice(0, 9);
-        console.log(this.books);
-        // this._globaleServie.hideLocalLoader();
+        
+        this._globaleServie.hideLocalLoader();
       } else {
-        // this._HelperMethodsService.errorAlert(res.Message);
+        this._globaleServie.messageAlert(MessageType.Error,"Error getting Data , Try Again");
       }
+    },(err)=>{
+      this._globaleServie.messageAlert(MessageType.Error,"Error getting Data , Try Again");
+
     });
   }
   redirectToBookDetails(key: string) {
@@ -35,6 +45,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(`/author/${key}`);
   }
   ngOnDestroy(): void {
-    // this.sub.unsubscribe();
+    this.sub.unsubscribe();
   }
 }

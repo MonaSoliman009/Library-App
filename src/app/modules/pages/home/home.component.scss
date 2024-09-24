@@ -36,7 +36,6 @@
   }
   
   @mixin flex-wrap($value: nowrap) {
-      // No Webkit Box fallback.
       -webkit-flex-wrap: $value;
       -moz-flex-wrap: $value;
       @if $value == nowrap {
@@ -48,7 +47,6 @@
   }
   
   @mixin flex-flow($values: (row nowrap)) {
-      // No Webkit Box fallback.
       -webkit-flex-flow: $values;
       -moz-flex-flow: $values;
       -ms-flex-flow: $values;
@@ -87,11 +85,8 @@
   
   @mixin flex($fg: 1, $fs: null, $fb: null) {
   
-      // Set a variable to be used by box-flex properties
       $fg-boxflex: $fg;
-  
-      // Box-Flex only supports a flex-grow value so let's grab the
-      // first item in the list and just return that.
+
       @if type-of($fg) == 'list' {
           $fg-boxflex: nth($fg, 1);
       }
@@ -142,7 +137,6 @@
   }
   
   @mixin align-self($value: auto) {
-      // No Webkit Box Fallback.
       -webkit-align-self: $value;
       -moz-align-self: $value;
       @if $value == flex-start {
@@ -156,7 +150,7 @@
   }
   
   @mixin align-content($value: stretch) {
-      // No Webkit Box Fallback.
+   
       -webkit-align-content: $value;
       -moz-align-content: $value;
       @if $value == flex-start {
@@ -171,9 +165,6 @@
   
   
   
-  /*------------------------------*\
-              ¡VARIABLES
-  \*------------------------------*/
   $base-spacing-unit: 10px;
   $tablet-lg: 991px;
   $tablet: 767px;
@@ -235,6 +226,8 @@
       margin: 0 auto;
       max-width: 100%;
       width: 100%;
+      cursor: pointer;
+
     }
     &-content {
       @include flexbox();

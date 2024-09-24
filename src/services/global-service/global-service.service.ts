@@ -45,7 +45,7 @@ export class GlobalService {
     this.ButtonLoadoer = false;
   }
   //#region Messaging
-  public messageAlert(
+   messageAlert(
     messageType: MessageType,
     message: string|undefined,
   ) {
@@ -59,7 +59,7 @@ export class GlobalService {
     this._messageSwal(messageType, message);
   }
 
-  private _messageAlert(messageType: MessageType, message: string) {
+ _messageAlert(messageType: MessageType, message: string) {
     switch (messageType) {
       case MessageType.Success:
         this.toastr.success(message);

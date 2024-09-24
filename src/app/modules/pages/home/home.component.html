@@ -1,5 +1,7 @@
 
   <div class="container ">
+    <app-localspinner *ngIf="_globaleServie.LocalLoadoer"></app-localspinner>
+
     <ul class="card-list">
       @for(item of books; track item.key){
         <li class="card-list-item">
