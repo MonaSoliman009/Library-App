@@ -6,10 +6,10 @@
           <div class="card">
             <div class="card-image">
               @if(item.cover_id){
-                <img (click)="redirectToDetails(item.key)" [src]="'https://covers.openlibrary.org/b/id/' + item.cover_id +'.jpg'" alt="placeholder" />
+                <img (click)="redirectToBookDetails(item.key)" [src]="'https://covers.openlibrary.org/b/id/' + item.cover_id +'.jpg'" alt="placeholder" />
 
               }@else {
-                <img (click)="redirectToDetails(item.key)" src="assets/images/default_cover.png" alt="placeholder" />
+                <img (click)="redirectToBookDetails(item.key)" src="assets/images/default_cover.png" alt="placeholder" />
 
                 
               }
@@ -18,7 +18,7 @@
               <h2 class="card-heading">Publish Year : {{item.first_publish_year              }}</h2>
               <h3 class="card-caption">Authors Names</h3>
               @for(author of item.authors;track author.key;let index = $index){
-               <p>{{index+1}}- {{author.name}}</p>
+               <p (click)="redirectToAuthorDetails(author.name)">{{index+1}}- {{author.name}}</p>
               }
             </div>
           </div>

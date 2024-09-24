@@ -28,8 +28,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     });
   }
-  redirectToDetails(key: string) {
+  redirectToBookDetails(key: string) {
     this.router.navigateByUrl(`/book/${key.split('/')[2]}`);
+  }
+  redirectToAuthorDetails(key: string) {
+    this.router.navigateByUrl(`/author/${key}`);
   }
   ngOnDestroy(): void {
     // this.sub.unsubscribe();

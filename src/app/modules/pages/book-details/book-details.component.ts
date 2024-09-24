@@ -6,13 +6,13 @@ import { CommonModule } from '@angular/common';
 import { AuthorsService } from '../../../../services/authors-service/authors.service';
 import { Author } from '../../../../models/author-data';
 @Component({
-  selector: 'app-details',
+  selector: 'app-book-details',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './details.component.html',
-  styleUrl: './details.component.scss'
+  templateUrl: './book-details.component.html',
+  styleUrl: './book-details.component.scss'
 })
-export class DetailsComponent implements OnInit {
+export class BookDetailsComponent {
   id: string | null = null; 
   private sub: any;
   book: BookData={} as BookData;

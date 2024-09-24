@@ -1,0 +1,26 @@
+<div class="book-details-card">
+    <div class="book-header">
+      <h2 class="book-title">{{author.name}}</h2>
+      <!-- <p class="book-authors">by F. Scott Fitzgerald</p> -->
+    </div>
+    <div class="book-info">
+        @if(author?.birth_date){
+            <p><strong>Birth Date:</strong> {{author?.birth_date}}</p>
+
+        }@else{
+            <p><strong>Birth Date:</strong> There is no available date for this author</p>
+
+        }
+        <p><strong>Work Count:</strong> {{author.work_count}}</p>
+
+      <!-- <p><strong>Editions Count:</strong> 12</p> -->
+      <!-- <p><strong>No. of Pages:</strong> 218</p> -->
+     <h3 class="card-caption">Top 5 Subjects:</h3>
+     <div class="subject_container">
+      @for(subject of author.top_subjects;track author.top_subjects;let index = $index){
+        <div class="subject_caption">{{index+1}}- {{subject}}</div>
+        } 
+     </div>
+   
+    </div>
+  </div>

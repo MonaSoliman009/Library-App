@@ -18,7 +18,7 @@ export class AuthorsService extends BaseService{
   ) {
     super(environment.baseUrl, _http, _globaleService);
   }
-  getAuthordetails(id: string): Observable<Author> {
-    return this.get<Author>(`${id}.json`);
+  getAuthordetails(name: string): Observable<any> {
+    return this.get<any>(`search/authors.json?q=${name}`);
   }
 }

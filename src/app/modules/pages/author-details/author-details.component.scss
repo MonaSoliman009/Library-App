@@ -1,0 +1,91 @@
+$card-background: #f9f9f9;
+$card-padding: 1.5rem;
+$card-border-radius: 10px;
+$primary-color: #1f4e78;
+$text-color: #333;
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+.book-details-card {
+  background-color: $card-background;
+  padding: $card-padding;
+  border-radius: $card-border-radius;
+  box-shadow: $shadow;
+  max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+  .book-header {
+    .book-title {
+      font-size: 1.5rem;
+      color: $primary-color;
+      margin: 0;
+      padding-bottom: 0.5rem;
+    }
+
+    .book-authors {
+      font-size: 1.2rem;
+      color: $text-color;
+      margin: 0;
+      padding-bottom: 1rem;
+    }
+  }
+
+  .book-info {
+    p {
+      font-size: 1rem;
+      color: $text-color;
+      line-height: 1.5;
+      strong {
+        font-weight: 600;
+        color: $primary-color;
+      }
+    }
+  }
+  .subject_container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .subject_caption{
+    border-radius:15%;
+    margin-right: 3%;
+    margin-top: 1%;
+    padding: 1%;
+    border:1px solid $primary-color;
+    -webkit-border-radius:15%;
+    -moz-border-radius:15%;
+    -ms-border-radius:15%;
+    -o-border-radius:15%;
+}
+}
+
+@media (max-width: 768px) {
+  .book-details-card {
+    max-width: 90%;
+    padding: 1rem;
+
+    .book-header .book-title {
+      font-size: 1.4rem;
+    }
+
+    .book-info p {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .book-details-card {
+    max-width: 100%;
+    padding: 0.8rem;
+
+    .book-header .book-title {
+      font-size: 1.2rem;
+    }
+
+    .book-info p {
+      font-size: 0.9rem;
+    }
+  }
+}
