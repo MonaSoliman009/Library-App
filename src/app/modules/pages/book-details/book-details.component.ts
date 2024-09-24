@@ -31,6 +31,11 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+});
     this.route.paramMap.subscribe({
       error: (err) => {
         this._globaleServie.messageAlert(
