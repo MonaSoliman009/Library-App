@@ -37,6 +37,7 @@ export interface Work {
   public_scan: boolean;
   subject: string[];
   title: string;
+  isFavorite?:boolean
 }
 
 interface Availability {

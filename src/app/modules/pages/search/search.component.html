@@ -1,1 +1,28 @@
-<p>search works!</p>
+<div class="search-container">
+  <!-- Search -->
+  <div class="search-box">
+    <input type="text" placeholder="Search books..." [(ngModel)]="term" />
+    <button class="icon" (click)="onSearch()">🔍</button>
+  </div>
+  @if (_globaleServie.LocalLoadoer) {
+    <app-localspinner></app-localspinner>
+  } @else {
+    <!-- Results -->
+    @if (books.length > 0) {
+      <div class="books-grid">
+        @for (book of books; track book.key) {
+          <div class="book-card" (click)="redirectToBookDetails(book.key)">
+            <div class="content">
+              <h3>{{ book.title }}</h3>
+              @if (book.first_publish_year) {
+                <span class="year">{{ book.first_publish_year }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="empty">Start typing to search books...</div>
+    }
+  }
+</div>

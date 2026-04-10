@@ -1,40 +1,61 @@
-
-  <div class="container ">
-    @if(_globaleServie.LocalLoadoer){
-      <app-localspinner ></app-localspinner>
-
-    }@else{
-      <ul class="card-list">
-        @for(item of books; track item.key){
-          <li class="card-list-item">
-            <div class="card">
-              <div class="card-image">
-                @if(item.cover_id){
-                  <img (click)="redirectToBookDetails(item.key)" [src]="'https://covers.openlibrary.org/b/id/' + item.cover_id +'.jpg'" alt="placeholder" />
-  
-                }@else {
-                  <img (click)="redirectToBookDetails(item.key)" src="assets/images/default_cover.png" alt="placeholder" />
-  
-                  
-                }
-              </div>
-              <div class="card-content">
-                <h2 class="card-heading">Publish Year : {{item.first_publish_year              }}</h2>
-                <h3 class="card-caption">Authors Names</h3>
-                @for(author of item.authors;track author.key;let index = $index){
-                 <p style="cursor: pointer;" (click)="redirectToAuthorDetails(author.name)">{{index+1}}- {{author.name}}</p>
-                }
-              </div>
+<div class="container">
+  @if (_globaleServie.LocalLoadoer) {
+    <app-localspinner></app-localspinner>
+  } @else {
+    <ul class="card-list">
+      @for (item of books; track item.key) {
+        <li class="card-list-item">
+          <div
+            class="fav"
+            (click)="toggleFavorite(item); $event.stopPropagation()"
+          >
+            @if (item.isFavorite) {
+              ❤️
+            } @else {
+              🤍
+            }
+          </div>
+          <div class="card">
+            <div class="card-image">
+              @if (item.cover_id) {
+                <img
+                  (click)="redirectToBookDetails(item.key)"
+                  [src]="
+                    'https://covers.openlibrary.org/b/id/' +
+                    item.cover_id +
+                    '.jpg'
+                  "
+                  alt="placeholder"
+                />
+              } @else {
+                <img
+                  (click)="redirectToBookDetails(item.key)"
+                  src="assets/images/default_cover.png"
+                  alt="placeholder"
+                />
+              }
             </div>
-          </li>
-        }@empty {
-  
-        }
-     
-   
-      
-      </ul>
-    }
-
-  
-  </div>
+            <div class="card-content">
+              <h2 class="card-heading">
+                Publish Year : {{ item.first_publish_year }}
+              </h2>
+              <h3 class="card-caption">Authors Names</h3>
+              @for (
+                author of item.authors;
+                track author.key;
+                let index = $index
+              ) {
+                <p
+                  style="cursor: pointer"
+                  (click)="redirectToAuthorDetails(author.name)"
+                >
+                  {{ index + 1 }}- {{ author.name }}
+                </p>
+              }
+            </div>
+          </div>
+        </li>
+      } @empty {}
+    </ul>
+  }
+</div>

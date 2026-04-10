@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { LocalspinnerComponent } from '../../shared/components/localspinner/localspinner.component';
 import { CommonModule } from '@angular/common';
 import { BooksApiCallResponse, Work } from '../../../../models/service.result';
+import { FavoriteService } from '../../../../services/favorites-service/favorites.service';
 
 @Component({
   selector: 'app-home',
@@ -24,8 +25,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private _BooksService: BooksService,
     private router: Router,
-    public _globaleServie: GlobalService
-  ) {}
+    public _globaleServie: GlobalService,
+    private favService: FavoriteService
+  ) { }
+  favorites = this.favService.getFavorites();
   ngOnInit() {
     this._globaleServie.showLocalLoader();
     this.sub = this._BooksService.getBooksData().subscribe({
@@ -39,8 +42,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (res) {
           console.log(res);
 
-          this.books = res.works.splice(0, 9);
+          this.books = res.works.slice(0, 9).map((book: any) => ({
+            ...book,
 
+            isFavorite: this.favorites.some(f => f.key === book.key)
+          }));
           this._globaleServie.hideLocalLoader();
         } else {
           this._globaleServie.messageAlert(
@@ -59,5 +65,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+  toggleFavorite(book: Work) {
+    this.favService.toggleFavorite(book);
   }
 }
